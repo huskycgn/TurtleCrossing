@@ -41,7 +41,8 @@ while game_is_on:
     time.sleep(sleep)
     screen.update()
 
-    if len(carlist) < 20:
+    random_number = randint(0, 6)
+    if random_number == 1:
         carlist.append(CarManager())
 
     for car in carlist:
@@ -50,12 +51,16 @@ while game_is_on:
             carlist.remove(car)
             # car.reset()
             car.hideturtle()
-        if car.distance(player) < 15:
-            player.player_reset()
+        if car.distance(player) < 20:
+            # player.player_reset()
+            scoreboard.game_over()
             sleep = 0.1
+            game_is_on = False
 
     if player.ycor() > 270:
         scoreboard.increase_score()
         player.player_reset()
         for car in carlist:
             sleep *= 0.9
+
+screen.exitonclick()
