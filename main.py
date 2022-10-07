@@ -13,18 +13,24 @@ game_is_on = True
 
 sleep = 0.1
 
-p1 = Player()
+player = Player()
 screen.listen()
-screen.onkey(key='Up', fun=p1.player_move)
+screen.onkey(key='Up', fun=player.player_move)
 
 carlist = []
 
-for _ in range(20):
+
+def carsCreate():
     carlist.append(CarManager())
+
+
+for _ in range(20):
+    carsCreate()
 
 # create initial cars
 for car in carlist:
     # Initial positions for cars:
+    print(car.color())
     initx = randint(-200, 270)
     inity = randint(-200, 270)
     car.goto(x=initx, y=inity)
@@ -44,12 +50,12 @@ while game_is_on:
             carlist.remove(car)
             # car.reset()
             car.hideturtle()
-        if car.distance(p1) < 15:
-            p1.player_reset()
+        if car.distance(player) < 15:
+            player.player_reset()
             sleep = 0.1
 
-    if p1.ycor() > 270:
+    if player.ycor() > 270:
         scoreboard.increase_score()
-        p1.player_reset()
+        player.player_reset()
         for car in carlist:
             sleep *= 0.9

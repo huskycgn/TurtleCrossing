@@ -21,4 +21,5 @@ class CarManager(Turtle):
 
     def move_car(self):
         self.goto(x=self.xcor() - 10, y=self.ycor())
-        print(self.xcor(), self.ycor())
+
+
