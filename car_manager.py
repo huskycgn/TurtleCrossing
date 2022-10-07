@@ -1,8 +1,8 @@
 from turtle import Turtle
 from random import choice, randint
 
-# COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
-COLORS = ["red", "orange", "yellow", "green", "blue"]
+COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
+# COLORS = ["red", "orange", "yellow", "green", "blue"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 
@@ -22,6 +22,3 @@ class CarManager(Turtle):
     def move_car(self):
         self.goto(x=self.xcor() - 10, y=self.ycor())
         print(self.xcor(), self.ycor())
-
-    def increase_speed(self):
-        self.move_speed += 1

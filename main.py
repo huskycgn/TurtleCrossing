@@ -11,6 +11,8 @@ screen.tracer(0)
 
 game_is_on = True
 
+sleep = 0.1
+
 p1 = Player()
 screen.listen()
 screen.onkey(key='Up', fun=p1.player_move)
@@ -30,7 +32,7 @@ for car in carlist:
 scoreboard = Scoreboard()
 
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(sleep)
     screen.update()
 
     if len(carlist) < 20:
@@ -44,9 +46,10 @@ while game_is_on:
             car.hideturtle()
         if car.distance(p1) < 15:
             p1.player_reset()
+            sleep = 0.1
 
     if p1.ycor() > 270:
         scoreboard.increase_score()
         p1.player_reset()
         for car in carlist:
-            car.increase_speed()
+            sleep *= 0.9
